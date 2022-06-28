@@ -32,15 +32,15 @@ export async function destroyClient(id) {
 export const validationSchema = Yup.object({
   razao_social: Yup.string().required("Campo obrigatório"),
   nome_fantasia: Yup.string().required("Campo obrigatório"),
-  inscricao_estadual: Yup.string().required("Campo obrigatório"),
-  inscricao_municipal: Yup.string().required("Campo obrigatório"),
-  cnpj: Yup.string().required("Campo obrigatório"),
+  inscricao_estadual: Yup.string().matches(/^[0-9]{9}$/, 'Campo precisa ter 9 números').required("Campo obrigatório"),
+  inscricao_municipal: Yup.string().matches(/^[0-9]{11}$/, 'Campo precisa ter 11 números').required("Campo obrigatório"),
+  cnpj: Yup.string().matches(/^[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2}$/, 'CNPJ inválido').required("Campo obrigatório"),
   endereco: Yup.string().required("Campo obrigatório"),
   bairro: Yup.string().required("Campo obrigatório"),
   cidade: Yup.string().required("Campo obrigatório"),
   estado: Yup.string().required("Campo obrigatório"),
-  cep: Yup.string().required("Campo obrigatório"),
-  telefone: Yup.string().required("Campo obrigatório"),
+  cep: Yup.string().matches(/^[0-9]{5}\-?[0-9]{3}$/, 'CEP inválido').required("Campo obrigatório"),
+  telefone: Yup.string().matches(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/, 'Telefone inválido').required("Campo obrigatório"),
   email: Yup.string().email("E-mail inválido").required("Campo obrigatório")
 });
 
@@ -63,8 +63,8 @@ export const Fields = [
   {id:"nome_fantasia", type:"text", label:"Nome Fantasia"},
   {id:"email", type:"text", label:"E-mail"},
   {id:"razao_social", type:"text", label:"Razão Social"},
-  {id:"inscricao_estadual", type:"text", label:"Inscricao Estadual"},
-  {id:"inscricao_municipal", type:"text", label:"Inscricao Municipal"},
+  {id:"inscricao_estadual", type:"number", label:"Inscricao Estadual"},
+  {id:"inscricao_municipal", type:"number", label:"Inscricao Municipal"},
   {id:"cnpj", type:"text", label:"CNPJ"},
   {id:"telefone", type:"text", label:"Telefone"},
   {id:"endereco", type:"text", label:"Endereco"},

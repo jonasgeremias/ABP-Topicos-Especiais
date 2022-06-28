@@ -58,11 +58,11 @@ export async function destroyDocument(id) {
 
 export const validationSchema = Yup.object({
   nome: Yup.string().required("Campo obrigatório"),
-  descricao: Yup.string(),
+  descricao: Yup.string().max(3000, "Descrição maior que permitida"),
   client_id: Yup.string().required("Campo obrigatório"),
-  data_validade: Yup.string(),
+  data_validade: Yup.date().required("Campo obrigatório"),
   categoria: Yup.string()
-  // ,  file: Yup.mixed().required('File is required')
+  // ,  file: Yup.mixed().required('File is required') 
 });
 
 /*
