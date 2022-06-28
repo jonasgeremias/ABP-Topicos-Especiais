@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingHolder from "~/components/LoadingHolder";
+import { API_URL } from "~/env";
 
 import { listDocuments, destroyDocument } from "~/actions/documents";
 
@@ -12,7 +13,7 @@ export default function List() {
   const fetchDestroyDocument = useMutation(item => destroyDocument(item.id), {
     onSuccess: () => navigate("/documents", { replace: true }),
   });
-  
+
   return (
     <LoadingHolder loading={!!documents.isLoading || !!fetchDestroyDocument.isLoading}>
       {documents.status === "error" && (
@@ -62,7 +63,7 @@ export default function List() {
             <tr>
               <th>Nome</th>
               <th className="text-center" style={{ width: 112 }}>
-                Clientes
+                Download
               </th>
               <th className="text-center" style={{ width: 146 }}>
                 Ações
@@ -81,7 +82,13 @@ export default function List() {
               {documents.data.map(item => (
                 <tr key={item.id}>
                   <td>{item.nome}</td>
-                  <td className="text-center">{item.clientsCount}</td>
+                  {/* Baixar documento */}
+                  <td className="text-center"><a href={API_URL + '/' + item.path}
+                    target="_blank" rel="noopener noreferrer" role="button"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                      <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                      <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                    </svg>  </a></td>
+
                   <td className="text-center">
                     <Link className="btn btn-info btn-sm" to={`/documents/edit/${item.id}`} role="button">
                       Editar
