@@ -80,7 +80,7 @@ export default function List() {
             <tbody>
               {clients.data.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="text-center p-5">
+                  <td colSpan={6} className="text-center p-5">
                     Nenhum cliente cadastrado em nosso sistema!
                   </td>
                 </tr>

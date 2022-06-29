@@ -100,7 +100,7 @@ export default function List() {
             <tbody>
               {documents.data.length === 0 && (
                 <tr>
-                  <td colSpan={3} className="text-center p-5">
+                  <td colSpan={7} className="text-center p-5">
                     Nenhum documento cadastrado em nosso sistema!
                   </td>
                 </tr>
