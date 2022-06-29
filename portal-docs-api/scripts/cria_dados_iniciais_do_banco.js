@@ -2,10 +2,10 @@ const { encryptSHA256 } = require("../auth");
 const { Users } = require("../models");
 
 Users.create({
-  nome: "Jonatas",
-  sobrenome: "F. Grassi",
-  email: "jonatasnb713@hotmail.com",
-  email_recuperacao: "jonatasnb713@hotmail.com",
+  nome: "Jonas",
+  sobrenome: "P. Geremias",
+  email: "jonasgeremias@hotmail.com",
+  email_recuperacao: "jonasgeremias@hotmail.com",
   estado: "SC",
   telefone: "48999999999",
   cpf: "99999999999",

@@ -53,7 +53,7 @@ export default function Edit() {
             error={hasFormError(formik, Field.id)}
           />
         })}
-        <button disabled={isLoading} className="btn btn-lg btn-primary mt-3" type="submit">
+        <button disabled={isLoading} className="btn btn-lg btn-dark mt-3" type="submit">
           Alterar
         </button>
       </form>

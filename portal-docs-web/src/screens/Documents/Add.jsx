@@ -81,7 +81,7 @@ export default function Add() {
           onChange={(e) => handleGetFile(e)}
         />
 
-        <button disabled={!!fetchCreateDocument.isLoading} className="btn btn-lg btn-primary mt-3" type="submit">
+        <button disabled={!!fetchCreateDocument.isLoading} className="btn btn-lg btn-dark mt-3" type="submit">
           Cadastrar
         </button>
       </form>

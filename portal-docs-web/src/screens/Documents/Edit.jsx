@@ -86,7 +86,7 @@ export default function Edit() {
           onChange={(e) => handleGetFile(e)}
         />
 
-        <button disabled={isLoading} className="btn btn-lg btn-primary mt-3" type="submit">
+        <button disabled={isLoading} className="btn btn-lg btn-dark mt-3" type="submit">
           Alterar
         </button>
       </form>

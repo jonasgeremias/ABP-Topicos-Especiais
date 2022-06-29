@@ -33,6 +33,9 @@ Back-End da ABP referente a disciplina de Tópicos Especiais.
 * api/documents/:id (alterar: PUT)
 * api/documents/:id (delete: DELETE)
 
+### Enviar emails:
+* api/email/send/:id (POST)
+
 ## Dependências do projeto 
 
 * Como ja foi adicionado no arquivo package.json, basta rodar o comando `npm install`, mas segue abaixo as dependências:
@@ -44,6 +47,7 @@ npm install --save mysql2
 npm install --save multer
 npm install --save-dev sequelize-cli
 npm install --save-dev nodemon
+npm install --save nodemailer
 ```
 
 * Depois rodar o comando `npm start`, que também foi configurado no package.json.
@@ -52,10 +56,8 @@ npm install --save-dev nodemon
 ### Sequelize para criação do banco de dados e models da aplicação:
 
 * Rodar o comando `npx sequelize-cli init `.
-*  alterar o `config/config.json` com o exemplo:
-* @pending ver as informações de acesso ao banco
-
- ```
+* Alterar o `config/config.json` com o exemplo:
+```
   {
   "development": {
     "username": "root",
@@ -72,7 +74,7 @@ npm install --save-dev nodemon
     "dialect": "mysql"
   }
 }
- ```
+```
 
 ### Comandos Sequelize para criar as tabelas:
 
@@ -96,18 +98,7 @@ npm install --save-dev nodemon
 ### Rodando os scripts iniciais
  * rodar o script `node scripts\cria_dados_iniciais_do_banco.js`
 
-### Coisas para ver com o Lucas
-
-* Campos CNPJ, CPF, Telefone, Endereço
-* unique no comando migrate
-
-
-### Observações
-* Token do usuário nao precisa pq usa JWT.
-
-
 ## Comandos mais usados GIT:
-
 * `git status`
 * `git add .`
 * `git commit -m "texto com a alteraçãodo commit"`
@@ -117,6 +108,8 @@ npm install --save-dev nodemon
 
 ## Autores
 
-* Jonas P.  Geremias
-* Jonatas F.  Grassi
-* Higor R. Librelato
+* Jonas P. Geremias
+
+* Jonatas F. Grassi
+
+* Higor R.Librelato

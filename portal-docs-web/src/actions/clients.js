@@ -26,6 +26,19 @@ export async function destroyClient(id) {
   return data;
 }
 
+export async function sendEmail(id_client, title, message) {
+  try {
+    const formData = {
+      title, message
+    }
+    const { data } = await axios.post(`/email/send/${id_client}`, formData);
+    return data;
+  }
+  catch (err) { console.log(err.error, err.message) }
+
+  return null;
+}
+
 
 /*****************************************************************************/
 
@@ -60,19 +73,19 @@ export const initialValuesFields = {
 }
 
 export const Fields = [
-  {id:"nome_fantasia", type:"text", label:"Nome Fantasia"},
-  {id:"email", type:"text", label:"E-mail"},
-  {id:"razao_social", type:"text", label:"Razão Social"},
-  {id:"inscricao_estadual", type:"number", label:"Inscricao Estadual"},
-  {id:"inscricao_municipal", type:"number", label:"Inscricao Municipal"},
-  {id:"cnpj", type:"text", label:"CNPJ"},
-  {id:"telefone", type:"text", label:"Telefone"},
-  {id:"endereco", type:"text", label:"Endereco"},
-  {id:"bairro", type:"text", label:"Bairro"},
-  {id:"cidade", type:"text", label:"Cidade"},
-  {id:"estado", type:"text", label:"Estado"},
-  {id:"cep", type:"text", label:"Cep"}
+  { id: "nome_fantasia", type: "text", label: "Nome Fantasia" },
+  { id: "email", type: "text", label: "E-mail" },
+  { id: "razao_social", type: "text", label: "Razão Social" },
+  { id: "inscricao_estadual", type: "number", label: "Inscricao Estadual" },
+  { id: "inscricao_municipal", type: "number", label: "Inscricao Municipal" },
+  { id: "cnpj", type: "text", label: "CNPJ" },
+  { id: "telefone", type: "text", label: "Telefone" },
+  { id: "endereco", type: "text", label: "Endereco" },
+  { id: "bairro", type: "text", label: "Bairro" },
+  { id: "cidade", type: "text", label: "Cidade" },
+  { id: "estado", type: "text", label: "Estado" },
+  { id: "cep", type: "text", label: "Cep" }
 ]
 
 
-    
+

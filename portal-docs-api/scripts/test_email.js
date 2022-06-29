@@ -1,17 +1,17 @@
 const { Emails, Clients } = require("../models");
 const { nodemailerTransporter } = require("../utils")
 
-const getFeldsReq = (req) => {
+const getFeldsReqTeste = (req) => {
   return {
-    title: req.body.title,
-    message: req.body.message
+    title: "Documento vencido - Portal Docs",
+    message: "Você tem um documento vencido."
   }
 }
 
-const sendEmail = async (req, res) => {
-  const { id } = req.params;
+const sendEmailTeste = async () => {
+  const id = 1
   try {
-    let formEmail = getFeldsReq(req);
+    let formEmail = getFeldsReqTeste();
 
     // Lendo o usuário no banco
     const client = await Clients.findOne({
@@ -20,7 +20,7 @@ const sendEmail = async (req, res) => {
 
     // Setando o envio do email 
     if (!!client) {
-      formEmail.email = client.email;
+      formEmail.email = "jonasgeremiasjj@gmail.com"; //client.email;
       formEmail.nome_fantasia = client.nome_fantasia;
       const date = new Date();
       formEmail.data_envio = date.toISOString()
@@ -29,16 +29,14 @@ const sendEmail = async (req, res) => {
 
       // Enviando de forma assincrona 
       var mailOptions = {
-        from: 'abp_portal_docs@hotmail.com',
+        from: 'jonasgeremias@hotmail.com',
         to: formEmail.email,
         subject: formEmail.title,
         text: formEmail.message
       };
 
-      // formEmail.status = "Enviando"
-      // const newEmail = await Emails.create(formEmail);
-      // console.info(newEmail)
-      // res.status(200).json(newEmail);
+      formEmail.status = "Enviando"
+      const newEmail = await Emails.create(formEmail);
 
       await nodemailerTransporter.sendMail(mailOptions, async function (error, info) {
         if (error) {
@@ -51,17 +49,13 @@ const sendEmail = async (req, res) => {
 
         const newEmail = await Emails.create(formEmail);
         console.info(newEmail)
-        res.status(200).json(newEmail);
       });
-
     } else {
       console.error({ error: "Cliente não encontrado" });
-      res.status(404).json({ error: "Cliente não encontrado" });
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Erro interno" });
   }
 }
 
-exports.sendEmail = sendEmail
+sendEmailTeste()
