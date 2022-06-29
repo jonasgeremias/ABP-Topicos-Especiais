@@ -30,8 +30,6 @@ function UserMenu() {
               d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
             />
           </svg>
-          {` `}
-          {usuario?.nome}
         </a>
         <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark">
           <li>
@@ -44,7 +42,7 @@ function UserMenu() {
                 logout();
                 navigate("/login", { replace: true });
               }}>
-              Sair / Logout
+              Logout
             </a>
           </li>
         </ul>
@@ -56,12 +54,7 @@ function UserMenu() {
 function Menu() {
   return (
     <div className="collapse navbar-collapse" id="navbarDefault">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-        </li>
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">        
         <li className="nav-item dropdown">
           <a
             className="nav-link dropdown-toggle"
@@ -118,7 +111,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div className="container">
           <a className="navbar-brand" href="/">
-            Portal Clientes
+            Portal DOCs
           </a>
           <button
             className="navbar-toggler"

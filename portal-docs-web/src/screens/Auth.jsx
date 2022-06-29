@@ -43,33 +43,54 @@ export default function Auth() {
 
   return (
     <main className="form-signin">
-      <LoadingHolder loading={!!loading}>
-        <form onSubmit={formik.handleSubmit} noValidate>
-          <h1 className="h3 mb-3 fw-normal">Portal Docs.</h1>
-          <SysInput
-            id="email"
-            type="email"
-            label="Endereço de e-mail"
-            placeholder="name@example.com"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            error={hasFormError(formik, "email")}
-          />
-          <SysInput
-            id="password"
-            type="password"
-            label="Senha"
-            placeholder="*******"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            error={hasFormError(formik, "password")}
-          />
-          <button className="w-100 btn btn-lg btn-primary" type="submit">
-            Efetuar Login
-          </button>
-          <p className="mt-5 mb-3 text-muted">&copy; 2022</p>
-        </form>
-      </LoadingHolder>
+
+      <div class="card">
+        <div class="card-header">
+          <h1>Login</h1>
+        </div>
+        <div class="card-body">
+
+
+
+          <LoadingHolder loading={!!loading}>
+            <form onSubmit={formik.handleSubmit} noValidate>
+              <h1 className="h3 mb-3 fw-normal">Portal Docs.</h1>
+              <SysInput
+                id="email"
+                type="email"
+                label="Endereço de e-mail"
+                placeholder="name@example.com"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={hasFormError(formik, "email")}
+              />
+              <SysInput
+                id="password"
+                type="password"
+                label="Senha"
+                placeholder="*******"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={hasFormError(formik, "password")}
+              />
+              <button className="w-100 btn btn-lg btn-dark" type="submit">
+                Efetuar Login
+              </button>
+              <p className="mt-5 mb-3 text-muted">&copy; 2022</p>
+            </form>
+          </LoadingHolder>
+
+
+
+
+
+
+        </div>
+      </div>
+
+
     </main>
+
+
   );
 }

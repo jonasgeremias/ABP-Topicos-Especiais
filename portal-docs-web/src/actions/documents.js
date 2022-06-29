@@ -44,9 +44,6 @@ export async function updateDocument(id, form) {
   });
   
   return data;
-
-  // const { data } = await axios.put(`/documents/${id}`, formData);
-  // return data;
 }
 
 export async function destroyDocument(id) {
@@ -58,20 +55,11 @@ export async function destroyDocument(id) {
 
 export const validationSchema = Yup.object({
   nome: Yup.string().required("Campo obrigatório"),
-  descricao: Yup.string(),
+  descricao: Yup.string().max(3000, "Descrição maior que permitida"),
   client_id: Yup.string().required("Campo obrigatório"),
-  data_validade: Yup.string(),
-  categoria: Yup.string()
-  // ,  file: Yup.mixed().required('File is required')
+  data_validade: Yup.date().required("Campo obrigatório"),
+  categoria: Yup.string()  
 });
-
-/*
-nome:req.body.nome,
-descricao:req.body.descricao,
-client_id: parseInt(req.body.client_id),
-data_validade:req.body.data_validade,
-categoria:req.body.categoria
-*/
 
 export const initialValuesFields = {
   nome: '',
@@ -79,7 +67,6 @@ export const initialValuesFields = {
   client_id: '',
   data_validade: '',
   categoria: '',
-  // file: ''
 }
 
 export const Fields = [

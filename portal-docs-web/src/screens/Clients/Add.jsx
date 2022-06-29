@@ -46,7 +46,7 @@ export default function Add() {
 
         <button
           disabled={!!fetchCreateClients.isLoading}
-          className="btn btn-lg btn-primary mt-3"
+          className="btn btn-lg btn-dark mt-3"
           type="submit">
           Cadastrar
         </button>

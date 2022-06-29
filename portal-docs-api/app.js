@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/uploads", express.static(__dirname + "/uploads"));
-
 // request, response
 app.get("/", (req, res) => {
   res.json({ ok: true });
 });
+
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 // initialize app routes
 routes(app);
